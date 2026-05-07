@@ -1,0 +1,14 @@
+query {
+  shop {
+    name
+    email
+    primaryDomain {
+      url
+    }
+    currencyCode
+    billingAddress {
+      city
+      country
+    }
+  }
+}
