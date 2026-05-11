@@ -1,0 +1,33 @@
+# Description: Creates two metaobject definitions - Font and Content Card
+# Required scopes: write_metaobject_definitions, read_metaobject_definitions
+# Documentation: https://shopify.dev/docs/api/admin-graphql/latest/mutations/metaobjectDefinitionCreate
+# Usage: Run with "📂 Shopify: Current File (mutation)" task
+
+mutation CreateMultipleDefinitions(
+  $fontDefinition: MetaobjectDefinitionCreateInput!
+  $contentCardDefinition: MetaobjectDefinitionCreateInput!
+) {
+  font: metaobjectDefinitionCreate(definition: $fontDefinition) {
+    metaobjectDefinition {
+      id
+      name
+      type
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+  
+  contentCard: metaobjectDefinitionCreate(definition: $contentCardDefinition) {
+    metaobjectDefinition {
+      id
+      name
+      type
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}

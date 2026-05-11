@@ -1,0 +1,102 @@
+{
+  "fontDefinition": {
+    "name": "Font",
+    "type": "font",
+    "fieldDefinitions": [
+      {
+        "name": "Name",
+        "key": "name",
+        "type": "single_line_text_field",
+        "required": true
+      },
+      {
+        "name": "Settings",
+        "key": "settings",
+        "type": "json",
+        "required": true
+      },
+      {
+        "name": "File",
+        "key": "file",
+        "type": "file_reference",
+        "required": false
+      }
+    ]
+  },
+  "contentCardDefinition": {
+    "name": "Content card",
+    "type": "content_card",
+    "description": "A multifunctional object for adding various types of dynamic content",
+    "capabilities": {
+      "translatable": {
+        "enabled": true
+      }
+    },
+    "fieldDefinitions": [
+      {
+        "name": "Card Name",
+        "key": "card_name",
+        "type": "single_line_text_field",
+        "required": true
+      },
+      {
+        "name": "Title",
+        "key": "title",
+        "type": "single_line_text_field"
+      },
+      {
+        "name": "Description",
+        "key": "description",
+        "type": "rich_text_field"
+      },
+      {
+        "name": "Subtitle",
+        "key": "subtitle",
+        "type": "rich_text_field"
+      },
+      {
+        "name": "Logo",
+        "key": "logo",
+        "type": "file_reference",
+        "validations": [
+          {
+            "name": "file_type_options",
+            "value": "[\"Image\"]"
+          }
+        ]
+      },
+      {
+        "name": "Image",
+        "key": "image",
+        "type": "file_reference",
+        "validations": [
+          {
+            "name": "file_type_options",
+            "value": "[\"Image\"]"
+          }
+        ]
+      },
+      {
+        "name": "Video",
+        "key": "video",
+        "type": "file_reference",
+        "validations": [
+          {
+            "name": "file_type_options",
+            "value": "[\"Video\"]"
+          }
+        ]
+      },
+      {
+        "name": "Label",
+        "key": "label",
+        "type": "single_line_text_field"
+      },
+      {
+        "name": "Link",
+        "key": "link",
+        "type": "url"
+      }
+    ]
+  }
+}
