@@ -101,17 +101,7 @@
       }
     },
     {
-      "label": "Shopify: Query (with variables)",
-      "type": "shell",
-      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file \"${relativeFile}\" --variable-file \"${input:variablesFile}\"",
-      "problemMatcher": [],
-      "presentation": {
-        "reveal": "always",
-        "panel": "shared"
-      }
-    },
-    {
-      "label": "Shopify: Mutation",
+      "label": "Shopify: Query/Mutation (with variables)",
       "type": "shell",
       "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file \"${relativeFile}\" --variable-file \"${input:variablesFile}\" --allow-mutations",
       "problemMatcher": [],
