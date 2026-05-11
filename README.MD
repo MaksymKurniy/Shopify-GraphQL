@@ -16,7 +16,7 @@ shopify-graphql/
 
 ## 🚀 Швидкий старт
 
-### 1. Встановлення Shopify CLI
+### 1. Встановлення Shopify CLI та AI Toolkit
 
 ```bash
 npm install -g @shopify/cli@latest
@@ -26,6 +26,9 @@ npm install -g @shopify/cli@latest
 ```bash
 shopify version
 ```
+
+Встановлення AI Toolkit:
+https://shopify.dev/docs/apps/build/ai-toolkit
 
 ### 2. Авторизація в магазині
 
@@ -56,16 +59,6 @@ shopify store execute -s <your-store> --query "{ shop { name } }"
 ```bash
 shopify store execute -s <your-store> --query-file ./mutation/example.gql --variables-file ./variables/example.json --allow-mutations
 ```
-
-## 📜 npm скрипти
-
-| Скрипт | Команда | Опис |
-|--------|---------|------|
-| `graphql-help` | `npm run graphql-help` | Показати допомогу по store execute |
-| `graphql-query` | `npm run graphql-query` | Виконати запит shop.gql |
-| `graphql-mutation` | `npm run graphql-mutation` | Виконати мутацію з змінними |
-
----
 
 ## 🔐 Таблиця скоупів (Access Scopes)
 
@@ -334,5 +327,3 @@ shopify store execute --store my-shop.myshopify.com --query-file ./mutation/upda
 
 1. Створіть `.gql` файл у відповідній папці (`query/` або `mutation/`)
 2. Якщо потрібні змінні — створіть `.json` файл у `variables/`
-3. Додайте npm скрипт у `package.json` (опціонально)
-4. Оновіть цей README з прикладом використання

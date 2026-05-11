@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
-  "author": "",
+  "author": "Maksym Kurniy",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "graphql-help": "shopify store execute --help",
-    "graphql-query": "shopify store execute --query-file ./query/shop.gql -s test",
-    "graphql-mutation": "shopify store execute --query-file ./mutation/shop.gql --variables-file ./variables.shop --allow-mutations"
+    "graphql-help": "shopify store execute --help"
   }
 }

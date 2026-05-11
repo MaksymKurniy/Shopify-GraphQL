@@ -1,0 +1,36 @@
+# Description: Retrieves all metaobject definitions from the store
+# Required scopes: read_metaobject_definitions
+
+query GetMetaobjectDefinitions {
+  metaobjectDefinitions(first: 50) {
+    edges {
+      node {
+        id
+        name
+        type
+        description
+        displayNameKey
+        access {
+          admin
+          storefront
+        }
+        fieldDefinitions {
+          key
+          name
+          description
+          required
+          type {
+            name
+            category
+          }
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}

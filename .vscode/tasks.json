@@ -1,0 +1,128 @@
+{
+  "version": "2.0.0",
+  "options": {
+    "env": {
+      "SHOPIFY_STORE_HANDLE": "extended-variants-rwf2gob7.myshopify.com"
+    }
+  },
+  "inputs": [
+    {
+      "id": "variablesFile",
+      "type": "pickString",
+      "description": "Select variables file (or None)",
+      "options": [
+        {
+          "label": "❌ No variables",
+          "value": ""
+        },
+        {
+          "label": "📝 Get Metaobjects Variables",
+          "value": "./variables/get-metaobjects.json"
+        },
+        {
+          "label": "📝 Update Product Variables",
+          "value": "./variables/updateProduct.json"
+        },
+        {
+          "label": "📝 Create Product Variables",
+          "value": "./variables/createProduct.json"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "id": "scopes",
+      "type": "pickString",
+      "description": "Select scopes for authorization",
+      "options": [
+        {
+          "label": "📖 Read Products",
+          "value": "read_products"
+        },
+        {
+          "label": "✏️ Write Products",
+          "value": "write_products"
+        },
+        {
+          "label": "📖 Read Orders",
+          "value": "read_orders"
+        },
+        {
+          "label": "✏️ Write Orders",
+          "value": "write_orders"
+        },
+        {
+          "label": "📖 Read Customers",
+          "value": "read_customers"
+        },
+        {
+          "label": "🔧 Full Inventory Access",
+          "value": "write_inventory, read_inventory"
+        },
+        {
+          "label": "🔧 Full Metaobjects Access",
+          "value": "read_metaobjects, read_metaobject_definitions, write_metaobjects, write_metaobject_definitions"
+        },
+        {
+          "label": "�📦 Products + Orders (read)",
+          "value": "read_products,read_orders"
+        },
+        {
+          "label": "🔧 Full Products Access",
+          "value": "read_products,write_products"
+        },
+        {
+          "label": "🔧 Full Inventory Access",
+          "value": "read_inventory,write_inventory,read_locations"
+        },
+        {
+          "label": "⚡ All Common (read)",
+          "value": "read_products,read_orders,read_customers,read_inventory,read_locations"
+        }
+      ],
+      "default": "read_products"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "🔐 Shopify: Auth",
+      "type": "shell",
+      "command": "shopify store auth -s $env:SHOPIFY_STORE_HANDLE --scopes ${input:scopes}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📂 Shopify: Current File (query)",
+      "type": "shell",
+      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file ${relativeFile}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📂 Shopify: Current File (query with variables)",
+      "type": "shell",
+      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file ${relativeFile} --variables-file ${input:variablesFile}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📂 Shopify: Current File (mutation)",
+      "type": "shell",
+      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file ${relativeFile} --allow-mutations",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}
