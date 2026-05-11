@@ -13,7 +13,13 @@
       "args": {
         "include": "variables/*.json",
         "description": "Select variables file",
-        "display": "fileName"
+        "display": "fileName",
+        "transform": {
+          "text": "${relativeFile}",
+          "find": "\\\\",
+          "replace": "/",
+          "flags": "g"
+        }
       },
     },
     {
@@ -87,7 +93,7 @@
     {
       "label": "📂 Shopify: Current File (query)",
       "type": "shell",
-      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file ${relativeFile}",
+      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file \"${relativeFile}\"",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
@@ -97,7 +103,7 @@
     {
       "label": "📂 Shopify: Current File (query with variables)",
       "type": "shell",
-      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file ${relativeFile} --variables ${input:variablesFile}",
+      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file \"${relativeFile}\" --variable-file \"${input:variablesFile}\"",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
@@ -107,7 +113,7 @@
     {
       "label": "📂 Shopify: Current File (mutation)",
       "type": "shell",
-      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file ${relativeFile} --variables ${input:variablesFile} --allow-mutations",
+      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file \"${relativeFile}\" --variable-file \"${input:variablesFile}\" --allow-mutations",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
