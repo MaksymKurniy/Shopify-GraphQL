@@ -8,27 +8,13 @@
   "inputs": [
     {
       "id": "variablesFile",
-      "type": "pickString",
-      "description": "Select variables file (or None)",
-      "options": [
-        {
-          "label": "❌ No variables",
-          "value": ""
-        },
-        {
-          "label": "📝 Get Metaobjects Variables",
-          "value": "./variables/get-metaobjects.json"
-        },
-        {
-          "label": "📝 Update Product Variables",
-          "value": "./variables/updateProduct.json"
-        },
-        {
-          "label": "📝 Create Product Variables",
-          "value": "./variables/createProduct.json"
-        }
-      ],
-      "default": ""
+      "type": "command",
+      "command": "extension.commandvariable.file.pickFile",
+      "args": {
+        "include": "variables/*.json",
+        "description": "Select variables file",
+        "display": "fileName"
+      },
     },
     {
       "id": "scopes",
@@ -72,6 +58,10 @@
           "value": "read_products,write_products"
         },
         {
+          "label": "🔧 Full Сontent Access",
+          "value": "write_content"
+        },
+        {
           "label": "🔧 Full Inventory Access",
           "value": "read_inventory,write_inventory,read_locations"
         },
@@ -107,7 +97,7 @@
     {
       "label": "📂 Shopify: Current File (query with variables)",
       "type": "shell",
-      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file ${relativeFile} --variables-file ${input:variablesFile}",
+      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file ${relativeFile} --variables ${input:variablesFile}",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
@@ -117,7 +107,7 @@
     {
       "label": "📂 Shopify: Current File (mutation)",
       "type": "shell",
-      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file ${relativeFile} --allow-mutations",
+      "command": "shopify store execute -s $env:SHOPIFY_STORE_HANDLE --query-file ${relativeFile} --variables ${input:variablesFile} --allow-mutations",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",

@@ -1,0 +1,28 @@
+# Description: Retrieves all pages from the online store (About, Contact, Policies, etc.)
+# Required scopes: read_content, read_online_store_pages
+# Documentation: https://shopify.dev/docs/api/admin-graphql/latest/queries/pages
+# Usage: Run with "📂 Shopify: Current File (query)" task
+
+query GetPages {
+  pages(first: 50) {
+    edges {
+      node {
+        id
+        title
+        handle
+        body
+        bodySummary
+        isPublished
+        createdAt
+        updatedAt
+        templateSuffix
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
