@@ -1,0 +1,18 @@
+# Description: Updates a page's title and template suffix
+# Required scopes: write_content, write_online_store_pages
+# Documentation: https://shopify.dev/docs/api/admin-graphql/latest/mutations/pageUpdate
+# Usage: Run with "📂 Shopify: Query/Mutation" task
+
+mutation UpdatePage($id: ID!, $page: PageUpdateInput!) {
+  pageUpdate(id: $id, page: $page) {
+    page {
+      id
+      title
+      templateSuffix
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}

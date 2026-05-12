@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "options": {
     "env": {
-      "SHOPIFY_STORE_HANDLE": "extended-variants-rwf2gob7.myshopify.com"
+      "SHOPIFY_STORE_HANDLE": "HANDLE.myshopify.com"
     }
   },
   "inputs": [
