@@ -35,29 +35,29 @@ https://shopify.dev/docs/apps/build/ai-toolkit
 Перед виконанням запитів потрібно авторизуватись:
 
 ```bash
-shopify store auth --store <your-store>.myshopify.com --scopes <scopes>
+shopify store auth -s <your-store-handle> --scopes <scopes>
 ```
 
 **Приклад:**
 ```bash
-shopify store auth --store my-shop.myshopify.com --scopes read_products,read_orders
+shopify store auth -s my-shop --scopes read_products,read_orders
 ```
 
 ### 3. Виконання запитів
 
 **З файлу:**
 ```bash
-shopify store execute -s <your-store> --query-file ./query/shop.gql
+shopify store execute -s <your-store-handle> --query-file query/shop.gql
 ```
 
 **Inline запит:**
 ```bash
-shopify store execute -s <your-store> --query "{ shop { name } }"
+shopify store execute -s <your-store-handle> --query "{ shop { name } }"
 ```
 
 **З мутаціями (потребує --allow-mutations):**
 ```bash
-shopify store execute -s <your-store> --query-file ./mutation/example.gql --variable-file ./variables/example.json --allow-mutations
+shopify store execute -s <your-store-handle> --query-file mutation/example.gql --variable-file variables/example.json --allow-mutations
 ```
 
 ## 🔐 Таблиця скоупів (Access Scopes)
@@ -194,8 +194,8 @@ query {
 
 **Виконання:**
 ```bash
-shopify store auth --store my-shop.myshopify.com --scopes read_content
-shopify store execute --store my-shop.myshopify.com --query-file ./query/shop.gql
+shopify store auth -s my-shop --scopes read_content
+shopify store execute -s my-shop --query-file query/shop.gql
 ```
 
 ### Отримати список продуктів
@@ -286,8 +286,8 @@ mutation productUpdate($input: ProductInput!) {
 
 **Виконання:**
 ```bash
-shopify store auth --store my-shop.myshopify.com --scopes write_products
-shopify store execute --store my-shop.myshopify.com --query-file ./mutation/updateProduct.gql --variable-file ./variables/updateProduct.json --allow-mutations
+shopify store auth -s my-shop --scopes write_products
+shopify store execute -s my-shop --query-file mutation/updateProduct.gql --variable-file variables/updateProduct.json --allow-mutations
 ```
 
 ---
@@ -300,17 +300,7 @@ shopify store execute --store my-shop.myshopify.com --query-file ./mutation/upda
 | `shopify help [command]` | Довідка по команді |
 | `shopify version` | Поточна версія CLI |
 | `shopify upgrade` | Оновити CLI до останньої версії |
-| `shopify store auth --store <domain> --scopes <scopes>` | Авторизація в магазині |
 | `shopify store execute --help` | Довідка по execute |
-
----
-
-## 📚 Корисні посилання
-
-- [Shopify GraphQL Admin API Reference](https://shopify.dev/docs/api/admin-graphql)
-- [Access Scopes Documentation](https://shopify.dev/docs/api/usage/access-scopes)
-- [Shopify CLI Documentation](https://shopify.dev/docs/api/shopify-cli)
-- [GraphQL Learning Kit](https://shopify.dev/docs/apps/build/graphql)
 
 ---
 
@@ -327,3 +317,15 @@ shopify store execute --store my-shop.myshopify.com --query-file ./mutation/upda
 
 1. Створіть `.gql` файл у відповідній папці (`query/` або `mutation/`)
 2. Якщо потрібні змінні — створіть `.json` файл у `variables/`
+
+Альтернативно через ШІ
+1. Виберіть відповідного агента `Shopify GraphQL Generator` і опишіть бажаний запит
+
+---
+
+## 📚 Корисні посилання
+
+- [Shopify GraphQL Admin API Reference](https://shopify.dev/docs/api/admin-graphql)
+- [Access Scopes Documentation](https://shopify.dev/docs/api/usage/access-scopes)
+- [Shopify CLI Documentation](https://shopify.dev/docs/api/shopify-cli)
+- [GraphQL Learning Kit](https://shopify.dev/docs/apps/build/graphql)
