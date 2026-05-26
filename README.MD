@@ -57,7 +57,7 @@ shopify store execute -s <your-store> --query "{ shop { name } }"
 
 **З мутаціями (потребує --allow-mutations):**
 ```bash
-shopify store execute -s <your-store> --query-file ./mutation/example.gql --variables-file ./variables/example.json --allow-mutations
+shopify store execute -s <your-store> --query-file ./mutation/example.gql --variable-file ./variables/example.json --allow-mutations
 ```
 
 ## 🔐 Таблиця скоупів (Access Scopes)
@@ -287,7 +287,7 @@ mutation productUpdate($input: ProductInput!) {
 **Виконання:**
 ```bash
 shopify store auth --store my-shop.myshopify.com --scopes write_products
-shopify store execute --store my-shop.myshopify.com --query-file ./mutation/updateProduct.gql --variables-file ./variables/updateProduct.json --allow-mutations
+shopify store execute --store my-shop.myshopify.com --query-file ./mutation/updateProduct.gql --variable-file ./variables/updateProduct.json --allow-mutations
 ```
 
 ---
